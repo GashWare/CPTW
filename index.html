@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connecting People Through Wrestling</title>
+    <style>
+        /* --- Basic Page Styles --- */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            color: #f0f0f0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* --- Header & Navigation --- */
+        header {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('CPTW1.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #ffffff;
+            text-align: center;
+            padding: 100px 20px;
+            border-bottom: 4px solid #ff4500;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        /* --- About Section --- */
+        .about-section {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            padding: 60px 20px;
+            background-color: #242424;
+            flex-wrap: wrap; /* Allows wrapping on smaller screens */
+        }
+        
+        .about-text {
+            flex: 2; /* Takes up more space */
+        }
+
+        .about-image {
+            flex: 1; /* Takes up less space */
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            border: 3px solid #ddd;
+            min-width: 250px;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            color: #ff4500;
+        }
+
+        /* --- Events Section --- */
+        .event-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .event-card {
+            background-color: #2c2c2c;
+            border: 1px solid #444;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .event-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(255, 69, 0, 0.4);
+        }
+
+        .event-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .event-content {
+            padding: 20px;
+        }
+
+        .event-content h3 {
+            font-size: 1.5rem;
+            margin-top: 0;
+            color: #ffffff;
+        }
+
+        .event-content p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #cccccc;
+        }
+        
+        .event-details {
+            font-weight: bold;
+            color: #ff8c00;
+        }
+
+        /* --- Sponsor Button --- */
+        .sponsor-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin-top: 20px;
+            background-color: #ff4500;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .sponsor-btn:hover {
+            background-color: #cc3700;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            background-color: #111;
+            border-top: 2px solid #ff4500;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Connecting People Through Wrestling</h1>
+        <p>Bringing together the communities of professional wrestling and live music.</p>
+    </header>
+
+    <div class="container">
+    
+        <section class="about-section">
+            <div class="about-text">
+                <h2>About The Mission</h2>
+                <p>
+                    Welcome! This space is dedicated to reminding people what it's like to be a kid again—to rediscover that feeling of pure joy, wonder, and being completely present in the moment.
+                </p>
+                <p>
+                    My goal is to showcase the inherent connections that bind us all. On a deeper, spiritual level, we are all part of a universal tapestry. The roar of a wrestling crowd, the shared rhythm of a festival, the collective gasp at a stunning performance—these are powerful moments where thousands of individual energies sync up, vibrating on the same frequency and reminding us that we are one.
+                </p>
+                 <p>
+                    Professional wrestling and live music are modern-day rituals. They are sacred spaces for emotional release, storytelling, and collective experience. By stripping away the complexities of daily life, they allow us to tap into something ancient and deeply human: our universal need to connect. This journey is about capturing these moments of unity to prove that we are all more connected than we are different.
+                </p>
+            </div>
+            <div class="about-image">
+                <img src="CPTW2.jpg" alt="A crowd at a wrestling or music event">
+            </div>
+        </section>
+
+        <section id="events">
+            <h2>Upcoming Events</h2>
+            <div class="event-grid">
+
+                <div class="event-card">
+                    <img src="CPTW3.jpg" alt="WrestleMania promotional image">
+                    <div class="event-content">
+                        <h3>WWE WrestleMania 42</h3>
+                        <p class="event-details">April 18-19, 2026 - Las Vegas, NV</p>
+                        <p>The showcase of the immortals! The biggest professional wrestling event of the year, where legends are made.</p>
+                        <button class="sponsor-btn">Sponsor Me!</button>
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <img src="CPTW4.jpg" alt="Lollapalooza promotional image">
+                    <div class="event-content">
+                        <h3>Lollapalooza</h3>
+                        <p class="event-details">July 30 - Aug 2, 2026 - Chicago, IL</p>
+                        <p>A massive, world-renowned music festival in Grant Park featuring a huge range of musical genres.</p>
+                        <button class="sponsor-btn">Sponsor Me!</button>
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <img src="CPTW5.jpg" alt="Riot Fest promotional image">
+                    <div class="event-content">
+                        <h3>Riot Fest</h3>
+                        <p class="event-details">September 18-20, 2026 - Chicago, IL</p>
+                        <p>The perfect blend of punk, rock, and alternative artists. The energy here is always off the charts.</p>
+                        <button class="sponsor-btn">Sponsor Me!</button>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+        </div>
+
+    <footer>
+        <p>&copy; 2025 Connecting People Through Wrestling. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // This script adds a pop-up alert to every "Sponsor Me!" button.
+        document.addEventListener('DOMContentLoaded', function() {
+            const sponsorButtons = document.querySelectorAll('.sponsor-btn');
+
+            sponsorButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // --- IMPORTANT: CHANGE THE EMAIL ADDRESS BELOW! ---
+                    alert('Thank you for your interest in sponsoring!\n\nPlease contact me directly at your-email@example.com to arrange a donation.');
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
