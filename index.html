@@ -51,15 +51,15 @@
             gap: 40px;
             padding: 60px 20px;
             background-color: #242424;
-            flex-wrap: wrap; /* Allows wrapping on smaller screens */
+            flex-wrap: wrap; 
         }
         
         .about-text {
-            flex: 2; /* Takes up more space */
+            flex: 2;
         }
 
         .about-image {
-            flex: 1; /* Takes up less space */
+            flex: 1;
             text-align: center;
         }
 
@@ -128,7 +128,111 @@
             color: #ff8c00;
         }
 
-        /* --- Sponsor Button --- */
+        /* --- Merch Section Styles --- */
+        #merch {
+            padding-top: 60px;
+            padding-bottom: 40px;
+            border-top: 1px solid #333;
+            margin-top: 60px;
+        }
+
+        .merch-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .merch-header p {
+            color: #ccc; 
+            font-size: 1.1rem;
+        }
+
+        .merch-wall {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .merch-item {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            text-decoration: none;
+            color: #1a1a1a;
+            position: relative;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .merch-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 69, 0, 0.3);
+            z-index: 2;
+        }
+
+        .image-box {
+            position: relative;
+            width: 100%;
+            padding-top: 100%;
+            background-color: #f4f4f4;
+            overflow: hidden;
+        }
+
+        /* Pointing to LOCAL files now */
+        .image-box img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 10px;
+            transition: opacity 0.3s;
+            background: white;
+        }
+
+        .item-info {
+            padding: 15px;
+            text-align: center;
+            border-top: 1px solid #eee;
+            background: #fff;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .item-name {
+            font-weight: 800;
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .item-price {
+            color: #ff4500;
+            font-weight: bold;
+        }
+
+        .view-all-card {
+            background-color: #ff4500;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 20px;
+            min-height: 300px;
+        }
+        
+        .view-all-card:hover {
+            background-color: #e03e00;
+        }
+
+        /* --- Buttons --- */
         .sponsor-btn {
             display: block;
             width: 100%;
@@ -152,10 +256,16 @@
         /* --- Footer --- */
         footer {
             text-align: center;
-            padding: 20px;
+            padding: 40px 20px;
             margin-top: 40px;
             background-color: #111;
             border-top: 2px solid #ff4500;
+        }
+        
+        .footer-link {
+            color: #ff4500;
+            text-decoration: none;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -189,54 +299,106 @@
         <section id="events">
             <h2>Upcoming Events</h2>
             <div class="event-grid">
-
                 <div class="event-card">
-                    <img src="CPTW3.jpg" alt="WrestleMania promotional image">
+                    <img src="CPTW3.jpg" alt="WrestleMania">
                     <div class="event-content">
                         <h3>WWE WrestleMania 42</h3>
                         <p class="event-details">April 18-19, 2026 - Las Vegas, NV</p>
-                        <p>The showcase of the immortals! The biggest professional wrestling event of the year, where legends are made.</p>
+                        <p>The showcase of the immortals! The biggest professional wrestling event of the year.</p>
                         <button class="sponsor-btn">Sponsor Me!</button>
                     </div>
                 </div>
 
                 <div class="event-card">
-                    <img src="CPTW4.jpg" alt="Lollapalooza promotional image">
+                    <img src="CPTW4.jpg" alt="Lollapalooza">
                     <div class="event-content">
                         <h3>Lollapalooza</h3>
                         <p class="event-details">July 30 - Aug 2, 2026 - Chicago, IL</p>
-                        <p>A massive, world-renowned music festival in Grant Park featuring a huge range of musical genres.</p>
+                        <p>A massive, world-renowned music festival in Grant Park.</p>
                         <button class="sponsor-btn">Sponsor Me!</button>
                     </div>
                 </div>
 
                 <div class="event-card">
-                    <img src="CPTW5.jpg" alt="Riot Fest promotional image">
+                    <img src="CPTW5.jpg" alt="Riot Fest">
                     <div class="event-content">
                         <h3>Riot Fest</h3>
                         <p class="event-details">September 18-20, 2026 - Chicago, IL</p>
-                        <p>The perfect blend of punk, rock, and alternative artists. The energy here is always off the charts.</p>
+                        <p>The perfect blend of punk, rock, and alternative artists.</p>
                         <button class="sponsor-btn">Sponsor Me!</button>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <section id="merch">
+            <div class="merch-header">
+                <h2>The Merch Wall</h2>
+                <p>Support the mission. Gear fulfilled by Pro Wrestling Tees.</p>
+            </div>
+            
+            <div class="merch-wall">
+                <a href="https://www.prowrestlingtees.com/connecting-people-through-wrestling-flatbill-snapback.html" target="_blank" class="merch-item">
+                    <div class="image-box">
+                        <img src="cptw1001.png" alt="Snapback">
+                    </div>
+                    <div class="item-info">
+                        <div class="item-name">Flatbill Snapback</div>
+                        <div class="item-price">$19.99</div>
+                    </div>
+                </a>
+
+                <a href="https://www.prowrestlingtees.com/wrestling-news-site/reggae-frame-casey-smiles-edition.html" target="_blank" class="merch-item">
+                    <div class="image-box">
+                        <img src="cptw1009.png" alt="Reggae Frame">
+                    </div>
+                    <div class="item-info">
+                        <div class="item-name">Reggae Frame Tee</div>
+                        <div class="item-price">$19.99</div>
+                    </div>
+                </a>
+
+                <a href="https://www.prowrestlingtees.com/jamaica-out-of-many-one-people-skufius-yellow.html" target="_blank" class="merch-item">
+                    <div class="image-box">
+                        <img src="cptw1014.png" alt="Jamaica Shirt">
+                    </div>
+                    <div class="item-info">
+                        <div class="item-name">Jamaica: One People</div>
+                        <div class="item-price">$34.99</div>
+                    </div>
+                </a>
+
+                <a href="https://www.prowrestlingtees.com/reggae-your-life-og.html" target="_blank" class="merch-item">
+                    <div class="image-box">
+                        <img src="cptw1006.png" alt="Reggae Your Life">
+                    </div>
+                    <div class="item-info">
+                        <div class="item-name">Reggae Your Life OG</div>
+                        <div class="item-price">$24.99</div>
+                    </div>
+                </a>
                 
+                <a href="https://www.prowrestlingtees.com/connect" target="_blank" class="merch-item view-all-card">
+                    View Full<br>Collection<br>➜
+                </a>
+
             </div>
         </section>
         </div>
 
     <footer>
         <p>&copy; 2025 Connecting People Through Wrestling. All Rights Reserved.</p>
+        <p style="font-size: 0.9rem; color: #888; margin-top: 10px;">
+            <a href="https://www.prowrestlingtees.com" target="_blank" class="footer-link">ProWrestlingTees.com</a>
+        </p>
     </footer>
 
     <script>
-        // This script adds a pop-up alert to every "Sponsor Me!" button.
         document.addEventListener('DOMContentLoaded', function() {
             const sponsorButtons = document.querySelectorAll('.sponsor-btn');
-
             sponsorButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    // --- IMPORTANT: CHANGE THE EMAIL ADDRESS BELOW! ---
-                    alert('Thank you for your interest in sponsoring!\n\nPlease contact me directly at your-email@example.com to arrange a donation.');
+                    alert('Thank you for your interest in sponsoring!\n\nPlease contact me directly to arrange a donation.');
                 });
             });
         });
