@@ -21,12 +21,43 @@
             padding: 0;
             background-color: #1a1a1a;
             color: #f0f0f0;
+            overflow-x: hidden; /* Prevent horizontal scroll from the frame */
+        }
+
+        /* --- THE STATIC REGGAE FRAME --- */
+        .reggae-frame {
+            position: fixed; /* Locks it to the screen */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10000; /* Ensures it sits on top of everything */
+            pointer-events: none; /* Allows clicks to pass THROUGH the frame */
+            
+            /* Creating the 3 stripes using inset box-shadows */
+            box-shadow: 
+                inset 0 0 0 8px #009B3A,  /* Outer Green Stripe */
+                inset 0 0 0 16px #FED100, /* Middle Yellow Stripe */
+                inset 0 0 0 24px #CE1126; /* Inner Red Stripe */
+        }
+
+        /* Make the frame thinner on mobile phones */
+        @media (max-width: 600px) {
+            .reggae-frame {
+                box-shadow: 
+                    inset 0 0 0 4px #009B3A,
+                    inset 0 0 0 8px #FED100,
+                    inset 0 0 0 12px #CE1126;
+            }
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            /* Add padding to ensure content isn't covered by the frame on small screens */
+            padding-top: 30px; 
+            padding-bottom: 30px;
         }
 
         /* --- Header & Navigation --- */
@@ -187,7 +218,6 @@
             overflow: hidden;
         }
 
-        /* Pointing to LOCAL files now */
         .image-box img {
             position: absolute;
             top: 0;
@@ -279,6 +309,8 @@
     </style>
 </head>
 <body>
+
+    <div class="reggae-frame"></div>
 
     <header>
         <h1>Connecting People Through Wrestling</h1>
