@@ -41,78 +41,56 @@
             background-color: #1a1a1a;
             color: #f0f0f0;
             overflow-x: hidden;
-            padding-top: 80px; 
-            padding-bottom: 24px;
+            padding-top: 85px; 
         }
 
-        /* --- THE 4-BAR STATIC FRAME --- */
-        .frame-bar {
+        /* --- THE STATIC REGGAE FRAME (MOBILE FIX APPLIED) --- */
+        .reggae-frame {
             position: fixed;
+            /* Pinning all 4 corners prevents "jumping" on mobile resize */
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             z-index: 10000;
             pointer-events: none;
+            /* Forces GPU acceleration to stop visual jitter on scroll */
+            transform: translateZ(0); 
+            -webkit-transform: translateZ(0);
+            
+            /* The Border Stripes */
+            box-shadow: 
+                inset 0 0 0 8px #009B3A, 
+                inset 0 0 0 16px #FED100, 
+                inset 0 0 0 24px #CE1126;
         }
 
-        /* TOP BAR */
-        .frame-top {
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 24px;
-            background: linear-gradient(to bottom, #009B3A 33%, #FED100 33%, #FED100 66%, #CE1126 66%);
-        }
-
-        /* BOTTOM BAR */
-        .frame-bottom {
-            bottom: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 24px;
-            background: linear-gradient(to top, #009B3A 33%, #FED100 33%, #FED100 66%, #CE1126 66%);
-        }
-
-        /* LEFT BAR */
-        .frame-left {
-            top: 0; 
-            bottom: 0; 
-            left: 0; 
-            width: 24px;
-            background: linear-gradient(to right, #009B3A 33%, #FED100 33%, #FED100 66%, #CE1126 66%);
-        }
-
-        /* RIGHT BAR */
-        .frame-right {
-            top: 0; 
-            bottom: 0; 
-            right: 0; 
-            width: 24px;
-            background: linear-gradient(to left, #009B3A 33%, #FED100 33%, #FED100 66%, #CE1126 66%);
-        }
-
-        /* Mobile Adjustments for Frame */
         @media (max-width: 600px) {
-            .frame-top, .frame-bottom { 
-                height: 12px; 
-            }
-            .frame-left, .frame-right { 
-                width: 12px; 
+            .reggae-frame {
+                /* Thinner mobile borders */
+                box-shadow: 
+                    inset 0 0 0 4px #009B3A,
+                    inset 0 0 0 8px #FED100,
+                    inset 0 0 0 12px #CE1126;
             }
             body {
-                padding-top: 65px; 
+                padding-top: 65px;
             }
         }
 
         /* --- STICKY NAVIGATION --- */
         .navbar {
             position: fixed;
+            /* Snaps exactly to the bottom of the top border */
             top: 24px; 
-            left: 0; 
+            left: 0;
             right: 0;
             background-color: #000;
             border-bottom: 2px solid #ff4500;
             z-index: 9999;
             padding: 10px 0;
             text-align: center;
-            transform: translateZ(0);
+            transform: translateZ(0); /* Prevents navbar jitter too */
         }
 
         .navbar a {
@@ -129,9 +107,10 @@
             color: #ff4500;
         }
 
+        /* Adjust navbar position for mobile frame thickness */
         @media (max-width: 600px) {
             .navbar {
-                top: 12px; 
+                top: 12px;
             }
         }
 
@@ -139,346 +118,333 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            padding-bottom: 40px;
         }
 
         /* --- Header --- */
         header {
             background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('CPTW1.jpg');
-            background-size: cover; 
-            background-position: center; 
-            color: #ffffff; 
+            background-size: cover;
+            background-position: center;
+            color: #ffffff;
             text-align: center;
-            padding: 100px 20px; 
+            padding: 100px 20px;
             border-bottom: 4px solid #ff4500;
         }
 
         header h1 {
-            font-size: 3.5rem; 
-            margin: 0; 
-            text-transform: uppercase; 
+            font-size: 3.5rem;
+            margin: 0;
+            text-transform: uppercase;
             letter-spacing: 2px;
             text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
         }
 
         header p {
-            font-size: 1.2rem; 
-            margin-top: 10px; 
+            font-size: 1.2rem;
+            margin-top: 10px;
         }
 
         /* --- About Section --- */
         .about-section {
-            display: flex; 
-            align-items: center; 
-            gap: 40px; 
+            display: flex;
+            align-items: center;
+            gap: 40px;
             padding: 60px 20px;
-            background-color: #242424; 
+            background-color: #242424;
             flex-wrap: wrap; 
         }
         
         .about-text {
-            flex: 2; 
+            flex: 2;
         }
 
         .about-image {
-            flex: 1; 
-            text-align: center; 
+            flex: 1;
+            text-align: center;
         }
 
         .about-image img {
-            max-width: 100%; 
-            height: auto; 
-            border-radius: 10px; 
-            border: 3px solid #ddd; 
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            border: 3px solid #ddd;
             min-width: 250px;
         }
 
         h2 {
-            font-size: 2.5rem; 
-            text-align: center; 
+            font-size: 2.5rem;
+            text-align: center;
             margin-bottom: 40px;
-            text-transform: uppercase; 
+            text-transform: uppercase;
             color: #ff4500;
         }
 
         /* --- Slideshow Styles --- */
         #slideshow-section {
-            padding: 40px 0; 
-            border-bottom: 1px solid #333; 
+            padding: 40px 0;
+            border-bottom: 1px solid #333;
         }
 
         .slideshow-container {
-            max-width: 800px; 
-            position: relative; 
-            margin: auto; 
+            max-width: 800px;
+            position: relative;
+            margin: auto;
             background-color: #000;
-            border-radius: 10px; 
-            overflow: hidden; 
-            border: 2px solid #333; 
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid #333;
             aspect-ratio: 16 / 9;
-            display: flex; 
-            align-items: center; 
+            display: flex;
+            align-items: center;
             justify-content: center;
         }
 
         .slide-image {
-            width: 100%; 
-            height: 100%; 
-            object-fit: contain; 
-            display: none; 
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: none;
         }
 
         .slide-active {
-            display: block; 
-            animation: fade 1.5s; 
+            display: block;
+            animation: fade 1.5s;
         }
 
         .prev, .next {
-            cursor: pointer; 
-            position: absolute; 
-            top: 50%; 
-            width: auto; 
-            padding: 16px; 
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
             margin-top: -22px;
-            color: white; 
-            font-weight: bold; 
-            font-size: 18px; 
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
             transition: 0.6s ease;
-            border-radius: 0 3px 3px 0; 
-            user-select: none; 
-            background-color: rgba(0,0,0,0.5); 
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            background-color: rgba(0,0,0,0.5);
             z-index: 10;
         }
 
-        .next { 
-            right: 0; 
-            border-radius: 3px 0 0 3px; 
-        }
-
-        .prev { 
-            left: 0; 
-            border-radius: 3px 0 0 3px; 
-        }
+        .next { right: 0; border-radius: 3px 0 0 3px; }
+        .prev { left: 0; border-radius: 3px 0 0 3px; }
 
         .prev:hover, .next:hover {
             background-color: rgba(255, 69, 0, 0.8);
         }
 
         .loader {
-            border: 5px solid #333; 
-            border-top: 5px solid #ff4500; 
-            border-radius: 50%; 
-            width: 40px; 
+            border: 5px solid #333;
+            border-top: 5px solid #ff4500;
+            border-radius: 50%;
+            width: 40px;
             height: 40px;
-            animation: spin 1s linear infinite; 
+            animation: spin 1s linear infinite;
             position: absolute;
         }
 
-        @keyframes spin { 
-            0% { transform: rotate(0deg); } 
-            100% { transform: rotate(360deg); } 
-        }
-        
-        @keyframes fade { 
-            from {opacity: .4} 
-            to {opacity: 1} 
-        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes fade { from {opacity: .4} to {opacity: 1} }
 
         /* --- Event & Merch Grid Layouts --- */
         .event-grid {
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
-            gap: 30px; 
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
         }
 
         .merch-wall {
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
-            gap: 20px; 
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
         }
 
         /* --- Cards (Events & Merch) --- */
         .event-card {
-            background-color: #2c2c2c; 
-            border: 1px solid #444; 
-            border-radius: 10px; 
+            background-color: #2c2c2c;
+            border: 1px solid #444;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5); 
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .merch-item {
-            background-color: #fff; 
-            border-radius: 8px; 
-            overflow: hidden; 
-            text-decoration: none; 
-            color: #1a1a1a; 
-            position: relative; 
-            transition: transform 0.2s, box-shadow 0.2s; 
-            display: flex; 
-            flex-direction: column; 
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            text-decoration: none;
+            color: #1a1a1a;
+            position: relative;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
         }
-        
+
         .event-card:hover, .merch-item:hover {
-            transform: translateY(-5px); 
-            box-shadow: 0 10px 25px rgba(255, 69, 0, 0.4); 
-            z-index: 2; 
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 69, 0, 0.4);
+            z-index: 2;
         }
 
         .event-card img {
-            width: 100%; 
-            height: 200px; 
-            object-fit: cover; 
-            display: block; 
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
         }
 
         .event-content {
-            padding: 20px; 
+            padding: 20px;
         }
 
         .event-content h3 {
-            font-size: 1.5rem; 
-            margin: 0; 
-            color: #fff; 
-        }
-
-        .event-content p {
-            color: #ccc; 
-            line-height: 1.6; 
+            font-size: 1.5rem;
+            margin-top: 0;
+            color: #ffffff;
         }
 
         .event-details {
-            font-weight: bold; 
-            color: #ff8c00; 
+            font-weight: bold;
+            color: #ff8c00;
+        }
+
+        .event-content p {
+            color: #cccccc;
+            line-height: 1.6;
         }
 
         /* --- Merch Specific --- */
         .merch-header {
-            text-align: center; 
-            margin-bottom: 40px; 
+            text-align: center;
+            margin-bottom: 40px;
         }
         
         .merch-header p {
             color: #ccc; 
-            font-size: 1.1rem; 
+            font-size: 1.1rem;
         }
 
         .image-box {
-            position: relative; 
-            width: 100%; 
-            padding-top: 100%; 
-            background-color: #f4f4f4; 
-            overflow: hidden; 
+            position: relative;
+            width: 100%;
+            padding-top: 100%;
+            background-color: #f4f4f4;
+            overflow: hidden;
         }
 
         .image-box img {
-            position: absolute; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%; 
-            object-fit: contain; 
-            padding: 10px; 
-            background: white; 
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 10px;
+            background: white;
         }
 
         .item-info {
-            padding: 15px; 
-            text-align: center; 
-            border-top: 1px solid #eee; 
-            background: #fff; 
-            flex-grow: 1; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
+            padding: 15px;
+            text-align: center;
+            border-top: 1px solid #eee;
+            background: #fff;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .item-name {
-            font-weight: 800; 
-            font-size: 0.95rem; 
-            margin-bottom: 5px; 
-            text-transform: uppercase; 
+            font-weight: 800;
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+            text-transform: uppercase;
         }
 
         .item-price {
-            color: #ff4500; 
-            font-weight: bold; 
+            color: #ff4500;
+            font-weight: bold;
         }
 
         .view-all-card {
-            background-color: #ff4500; 
-            color: white; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            text-align: center; 
-            font-size: 1.5rem; 
-            font-weight: bold; 
-            text-transform: uppercase; 
-            padding: 20px; 
-            min-height: 300px; 
+            background-color: #ff4500;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 20px;
+            min-height: 300px;
         }
         
         .view-all-card:hover {
-            background-color: #e03e00; 
+            background-color: #e03e00;
         }
 
+        /* --- Buttons --- */
         .sponsor-btn {
-            display: block; 
-            width: 100%; 
-            padding: 15px; 
-            margin-top: 20px; 
-            background-color: #ff4500; 
-            color: #fff; 
-            border: none; 
-            border-radius: 5px; 
-            font-weight: bold; 
-            text-transform: uppercase; 
-            cursor: pointer; 
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin-top: 20px;
+            background-color: #ff4500;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
         .sponsor-btn:hover {
-            background-color: #cc3700; 
+            background-color: #cc3700;
         }
 
         /* --- Footer --- */
         footer {
-            text-align: center; 
-            padding: 40px 20px; 
-            margin-top: 40px; 
-            background-color: #111; 
-            border-top: 2px solid #ff4500; 
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 40px;
+            background-color: #111;
+            border-top: 2px solid #ff4500;
         }
         
         .footer-link {
-            color: #ff4500; 
-            text-decoration: none; 
-            font-weight: bold; 
+            color: #ff4500;
+            text-decoration: none;
+            font-weight: bold;
         }
 
         .legal-links {
-            margin-top: 20px; 
-            font-size: 0.8rem; 
+            margin-top: 20px;
+            font-size: 0.8rem;
         }
         
         .legal-links a {
-            color: #888; 
-            text-decoration: none; 
-            margin: 0 10px; 
+            color: #888;
+            text-decoration: none;
+            margin: 0 10px;
         }
         
         .legal-links a:hover {
-            color: #fff; 
-            text-decoration: underline; 
+            color: #fff;
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
 
-    <div class="frame-bar frame-top"></div>
-    <div class="frame-bar frame-bottom"></div>
-    <div class="frame-bar frame-left"></div>
-    <div class="frame-bar frame-right"></div>
+    <div class="reggae-frame"></div>
 
     <nav class="navbar">
         <a href="#about">About</a>
@@ -637,9 +603,11 @@
             });
         });
 
+        // --- GITHUB SLIDESHOW LOGIC ---
         const repoOwner = 'GashWare';
         const repoName = 'CPTW';
         const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/`;
+        
         let slideIndex = 0;
         let images = [];
         let autoSlideInterval;
@@ -648,41 +616,79 @@
             try {
                 const response = await fetch(apiUrl);
                 if (!response.ok) throw new Error('GitHub API Limit or Error');
+                
                 const data = await response.json();
-                const imageFiles = data.filter(file => file.name.match(/\.(jpg|jpeg|png|gif)$/i));
-                if (imageFiles.length > 0) { images = imageFiles; buildSlideshow(); } 
-                else { document.getElementById('slideshow-box').innerHTML = '<p style="color:white; padding:20px;">No images found in repo.</p>'; }
+                
+                // Filter for image files only (jpg, jpeg, png, gif)
+                const imageFiles = data.filter(file => 
+                    file.name.match(/\.(jpg|jpeg|png|gif)$/i)
+                );
+
+                if (imageFiles.length > 0) {
+                    images = imageFiles;
+                    buildSlideshow();
+                } else {
+                    document.getElementById('slideshow-box').innerHTML = '<p style="color:white; padding:20px;">No images found in repo.</p>';
+                }
             } catch (error) {
-                console.error('Error:', error);
+                console.error('Error fetching images:', error);
                 document.getElementById('slideshow-box').innerHTML = '<p style="color:#ff4500; padding:20px;">Gallery temporarily unavailable (API Rate Limit).<br>Try again later.</p>';
             }
         }
 
         function buildSlideshow() {
             const container = document.getElementById('slideshow-box');
-            document.getElementById('loader')?.remove();
+            // Remove loader
+            const loader = document.getElementById('loader');
+            if(loader) loader.remove();
+
+            // Create image elements
             images.forEach((file, index) => {
                 const img = document.createElement('img');
-                img.src = file.download_url;
+                img.src = file.download_url; // Uses raw.githubusercontent.com
                 img.className = 'slide-image';
-                img.alt = 'Community Slideshow Image - ' + file.name;
+                img.alt = 'Community Slideshow Image - ' + file.name; // SEO: Added Alt Text
                 if (index === 0) img.classList.add('slide-active');
                 container.insertBefore(img, container.querySelector('.prev'));
             });
+
+            // Start timer
             startAutoSlide();
         }
 
-        function changeSlide(n) { showSlides(slideIndex += n); resetAutoSlide(); }
+        function changeSlide(n) {
+            showSlides(slideIndex += n);
+            resetAutoSlide(); // Reset timer on manual click
+        }
+
         function showSlides(n) {
             const slides = document.getElementsByClassName("slide-image");
             if (slides.length === 0) return;
+
             if (n >= slides.length) slideIndex = 0;
             if (n < 0) slideIndex = slides.length - 1;
-            for (let i = 0; i < slides.length; i++) { slides[i].style.display = "none"; slides[i].classList.remove('slide-active'); }
-            slides[slideIndex].style.display = "block"; slides[slideIndex].classList.add('slide-active');
+
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none"; 
+                slides[i].classList.remove('slide-active');
+            }
+            
+            slides[slideIndex].style.display = "block";  
+            slides[slideIndex].classList.add('slide-active');
         }
-        function startAutoSlide() { autoSlideInterval = setInterval(() => { changeSlide(1); }, 4000); }
-        function resetAutoSlide() { clearInterval(autoSlideInterval); startAutoSlide(); }
+
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(() => {
+                changeSlide(1);
+            }, 4000); // Change image every 4 seconds
+        }
+
+        function resetAutoSlide() {
+            clearInterval(autoSlideInterval);
+            startAutoSlide();
+        }
+
+        // Initialize Slideshow
         fetchImages();
     </script>
 </body>
