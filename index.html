@@ -3,15 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connecting People Through Wrestling</title>
-	<meta name="google-adsense-account" content="ca-pub-9413013517648770">
+    
+    <title>Connecting People Through Wrestling | Music & Wrestling Community</title>
+    <meta name="description" content="Connecting People Through Wrestling brings together the raw energy of live music festivals and the storytelling of professional wrestling. Join the mission, discover events, and shop official merch.">
+    <meta name="keywords" content="Professional Wrestling, Music Festivals, WWE, WrestleMania, Riot Fest, Lollapalooza, Wrestling Community, CPTW, Pro Wrestling Tees">
+    <meta name="author" content="Connecting People Through Wrestling">
+    <link rel="canonical" href="https://www.prowrestlingtees.com/connect"> 
+
     <meta property="og:title" content="Connecting People Through Wrestling">
-    <meta property="og:description" content="Bringing together the communities of professional wrestling and live music.">
+    <meta property="og:description" content="Bringing together the communities of professional wrestling and live music. Join the mission.">
     <meta property="og:image" content="CPTW1.jpg">
     <meta property="og:url" content="https://www.prowrestlingtees.com/connect">
     <meta property="og:type" content="website">
 
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect x='0' y='0' width='100' height='33' fill='%23009B3A'/><rect x='0' y='33' width='100' height='34' fill='%23FED100'/><rect x='0' y='67' width='100' height='33' fill='%23CE1126'/><rect x='20' y='20' width='60' height='60' fill='%231a1a1a'/><circle cx='50' cy='50' r='18' fill='%23009B3A' stroke='%23FED100' stroke-width='2'/><path d='M35,50 Q50,65 65,50' stroke='%23FED100' stroke-width='2' fill='none'/></svg>">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "name": "Connecting People Through Wrestling",
+          "url": "https://www.prowrestlingtees.com/connect",
+          "logo": "CPTW1.jpg"
+        }
+      ]
+    }
+    </script>
 
     <style>
         /* --- Basic Page Styles --- */
@@ -22,6 +41,7 @@
             background-color: #1a1a1a;
             color: #f0f0f0;
             overflow-x: hidden;
+            padding-top: 60px; /* Space for fixed nav */
         }
 
         /* --- THE STATIC REGGAE FRAME --- */
@@ -46,17 +66,45 @@
                     inset 0 0 0 8px #FED100,
                     inset 0 0 0 12px #CE1126;
             }
+            body {
+                padding-top: 50px;
+            }
+        }
+
+        /* --- STICKY NAVIGATION --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #000;
+            border-bottom: 2px solid #ff4500;
+            z-index: 9999;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin: 0 15px;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #ff4500;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            padding-top: 30px; 
-            padding-bottom: 30px;
+            padding-bottom: 40px;
         }
 
-        /* --- Header & Navigation --- */
+        /* --- Header --- */
         header {
             background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('CPTW1.jpg');
             background-size: cover;
@@ -115,7 +163,7 @@
             color: #ff4500;
         }
 
-        /* --- NEW: Slideshow Styles --- */
+        /* --- Slideshow Styles --- */
         #slideshow-section {
             padding: 40px 0;
             border-bottom: 1px solid #333;
@@ -129,7 +177,7 @@
             border-radius: 10px;
             overflow: hidden;
             border: 2px solid #333;
-            aspect-ratio: 16 / 9; /* Keeps consistent shape */
+            aspect-ratio: 16 / 9;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -138,8 +186,8 @@
         .slide-image {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Ensures full image is visible */
-            display: none; /* Hidden by default */
+            object-fit: contain;
+            display: none;
         }
 
         .slide-active {
@@ -147,7 +195,6 @@
             animation: fade 1.5s;
         }
 
-        /* Next & previous buttons */
         .prev, .next {
             cursor: pointer;
             position: absolute;
@@ -162,23 +209,16 @@
             border-radius: 0 3px 3px 0;
             user-select: none;
             background-color: rgba(0,0,0,0.5);
+            z-index: 10;
         }
 
-        .next {
-            right: 0;
-            border-radius: 3px 0 0 3px;
-        }
-
-        .prev {
-            left: 0;
-            border-radius: 3px 0 0 3px;
-        }
+        .next { right: 0; border-radius: 3px 0 0 3px; }
+        .prev { left: 0; border-radius: 3px 0 0 3px; }
 
         .prev:hover, .next:hover {
             background-color: rgba(255, 69, 0, 0.8);
         }
 
-        /* Loading Spinner for Slideshow */
         .loader {
             border: 5px solid #333;
             border-top: 5px solid #ff4500;
@@ -192,13 +232,20 @@
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         @keyframes fade { from {opacity: .4} to {opacity: 1} }
 
-        /* --- Events Section --- */
+        /* --- Event & Merch Grid Layouts --- */
         .event-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
         }
 
+        .merch-wall {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        /* --- Cards (Events & Merch) --- */
         .event-card {
             background-color: #2c2c2c;
             border: 1px solid #444;
@@ -208,9 +255,23 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .event-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 25px rgba(255, 69, 0, 0.4);
+        .merch-item {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            text-decoration: none;
+            color: #1a1a1a;
+            position: relative;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .event-card:hover, .merch-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 69, 0, 0.4);
+            z-index: 2;
         }
 
         .event-card img {
@@ -230,25 +291,17 @@
             color: #ffffff;
         }
 
-        .event-content p {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #cccccc;
-        }
-        
         .event-details {
             font-weight: bold;
             color: #ff8c00;
         }
 
-        /* --- Merch Section Styles --- */
-        #merch {
-            padding-top: 60px;
-            padding-bottom: 40px;
-            border-top: 1px solid #333;
-            margin-top: 60px;
+        .event-content p {
+            color: #cccccc;
+            line-height: 1.6;
         }
 
+        /* --- Merch Specific --- */
         .merch-header {
             text-align: center;
             margin-bottom: 40px;
@@ -257,30 +310,6 @@
         .merch-header p {
             color: #ccc; 
             font-size: 1.1rem;
-        }
-
-        .merch-wall {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 20px;
-        }
-
-        .merch-item {
-            background-color: #fff;
-            border-radius: 8px;
-            overflow: hidden;
-            text-decoration: none;
-            color: #1a1a1a;
-            position: relative;
-            transition: transform 0.2s, box-shadow 0.2s;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .merch-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(255, 69, 0, 0.3);
-            z-index: 2;
         }
 
         .image-box {
@@ -299,7 +328,6 @@
             height: 100%;
             object-fit: contain;
             padding: 10px;
-            transition: opacity 0.3s;
             background: white;
         }
 
@@ -379,38 +407,61 @@
             text-decoration: none;
             font-weight: bold;
         }
+
+        .legal-links {
+            margin-top: 20px;
+            font-size: 0.8rem;
+        }
+        
+        .legal-links a {
+            color: #888;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        
+        .legal-links a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
 
     <div class="reggae-frame"></div>
 
+    <nav class="navbar">
+        <a href="#about">About</a>
+        <a href="#slideshow-section">Gallery</a>
+        <a href="#events">Events</a>
+        <a href="#merch">Merch</a>
+    </nav>
+
     <header>
         <h1>Connecting People Through Wrestling</h1>
         <p>Bringing together the communities of professional wrestling and live music.</p>
     </header>
 
-    <div class="container">
+    <main class="container">
     
-        <section class="about-section">
+        <section id="about" class="about-section" aria-label="About The Mission">
             <div class="about-text">
                 <h2>About The Mission</h2>
                 <p>
-                    Welcome! This space is dedicated to reminding people what it's like to be a kid again—to rediscover that feeling of pure joy, wonder, and being completely present in the moment.
+                    Welcome! Connecting People Through Wrestling (CPTW) is dedicated to reminding people what it's like to be a kid again—to rediscover that feeling of pure joy, wonder, and being completely present in the moment.
                 </p>
                 <p>
-                    My goal is to showcase the inherent connections that bind us all. On a deeper, spiritual level, we are all part of a universal tapestry. The roar of a wrestling crowd, the shared rhythm of a festival, the collective gasp at a stunning performance—these are powerful moments where thousands of individual energies sync up, vibrating on the same frequency and reminding us that we are one.
+                    My goal is to showcase the inherent connections that bind us all. On a deeper, spiritual level, we are all part of a universal tapestry. The roar of a wrestling crowd, the shared rhythm of a festival, the collective gasp at a stunning performance—these are powerful moments where thousands of individual energies sync up.
                 </p>
                  <p>
-                    Professional wrestling and live music are modern-day rituals. They are sacred spaces for emotional release, storytelling, and collective experience. By stripping away the complexities of daily life, they allow us to tap into something ancient and deeply human: our universal need to connect. This journey is about capturing these moments of unity to prove that we are all more connected than we are different.
+                    Professional wrestling and live music are modern-day rituals. They are sacred spaces for emotional release. By sponsoring this mission, you aren't just buying a ticket; you are supporting a movement to prove that we are all more connected than we are different.
                 </p>
             </div>
             <div class="about-image">
-                <img src="CPTW2.jpg" alt="A crowd at a wrestling or music event">
+                <img src="CPTW2.jpg" alt="A crowd at a wrestling or music event" loading="lazy">
             </div>
         </section>
 
-        <section id="slideshow-section">
+        <section id="slideshow-section" aria-label="Community Gallery">
             <h2>Community Gallery</h2>
             <div class="slideshow-container" id="slideshow-box">
                 <div class="loader" id="loader"></div>
@@ -418,54 +469,55 @@
                 <a class="next" onclick="changeSlide(1)">&#10095;</a>
             </div>
             <p style="text-align: center; color: #888; font-size: 0.9rem;">
-                Live updates from <a href="https://github.com/GashWare/CPTW" target="_blank" style="color:#ff4500;">GashWare/CPTW</a>
+                Live updates from <a href="https://github.com/GashWare/CPTW" target="_blank" rel="noopener noreferrer" style="color:#ff4500;">GashWare/CPTW</a>
             </p>
         </section>
-        <section id="events">
+
+        <section id="events" aria-label="Upcoming Events">
             <h2>Upcoming Events</h2>
             <div class="event-grid">
-                <div class="event-card">
-                    <img src="CPTW3.jpg" alt="WrestleMania">
+                <article class="event-card">
+                    <img src="CPTW3.jpg" alt="WWE WrestleMania 42 Promotional Image" loading="lazy">
                     <div class="event-content">
                         <h3>WWE WrestleMania 42</h3>
                         <p class="event-details">April 18-19, 2026 - Las Vegas, NV</p>
                         <p>The showcase of the immortals! The biggest professional wrestling event of the year.</p>
                         <button class="sponsor-btn">Sponsor Me!</button>
                     </div>
-                </div>
+                </article>
 
-                <div class="event-card">
-                    <img src="CPTW4.jpg" alt="Lollapalooza">
+                <article class="event-card">
+                    <img src="CPTW4.jpg" alt="Lollapalooza 2026 Promotional Image" loading="lazy">
                     <div class="event-content">
                         <h3>Lollapalooza</h3>
                         <p class="event-details">July 30 - Aug 2, 2026 - Chicago, IL</p>
                         <p>A massive, world-renowned music festival in Grant Park.</p>
                         <button class="sponsor-btn">Sponsor Me!</button>
                     </div>
-                </div>
+                </article>
 
-                <div class="event-card">
-                    <img src="CPTW5.jpg" alt="Riot Fest">
+                <article class="event-card">
+                    <img src="CPTW5.jpg" alt="Riot Fest 2026 Promotional Image" loading="lazy">
                     <div class="event-content">
                         <h3>Riot Fest</h3>
                         <p class="event-details">September 18-20, 2026 - Chicago, IL</p>
                         <p>The perfect blend of punk, rock, and alternative artists.</p>
                         <button class="sponsor-btn">Sponsor Me!</button>
                     </div>
-                </div>
+                </article>
             </div>
         </section>
 
-        <section id="merch">
+        <section id="merch" aria-label="Official Merchandise">
             <div class="merch-header">
                 <h2>The Merch Wall</h2>
                 <p>Support the mission. Gear fulfilled by Pro Wrestling Tees.</p>
             </div>
             
             <div class="merch-wall">
-                <a href="https://www.prowrestlingtees.com/connecting-people-through-wrestling-flatbill-snapback.html" target="_blank" class="merch-item">
+                <a href="https://www.prowrestlingtees.com/connecting-people-through-wrestling-flatbill-snapback.html" target="_blank" rel="noopener noreferrer" class="merch-item">
                     <div class="image-box">
-                        <img src="cptw1001.png" alt="Snapback">
+                        <img src="cptw1001.png" alt="Official CPTW Flatbill Snapback Hat" loading="lazy">
                     </div>
                     <div class="item-info">
                         <div class="item-name">Flatbill Snapback</div>
@@ -473,9 +525,9 @@
                     </div>
                 </a>
 
-                <a href="https://www.prowrestlingtees.com/wrestling-news-site/reggae-frame-casey-smiles-edition.html" target="_blank" class="merch-item">
+                <a href="https://www.prowrestlingtees.com/wrestling-news-site/reggae-frame-casey-smiles-edition.html" target="_blank" rel="noopener noreferrer" class="merch-item">
                     <div class="image-box">
-                        <img src="cptw1009.png" alt="Reggae Frame">
+                        <img src="cptw1009.png" alt="Reggae Frame Casey Smiles Edition T-Shirt" loading="lazy">
                     </div>
                     <div class="item-info">
                         <div class="item-name">Reggae Frame Tee</div>
@@ -483,9 +535,9 @@
                     </div>
                 </a>
 
-                <a href="https://www.prowrestlingtees.com/jamaica-out-of-many-one-people-skufius-yellow.html" target="_blank" class="merch-item">
+                <a href="https://www.prowrestlingtees.com/jamaica-out-of-many-one-people-skufius-yellow.html" target="_blank" rel="noopener noreferrer" class="merch-item">
                     <div class="image-box">
-                        <img src="cptw1014.png" alt="Jamaica Shirt">
+                        <img src="cptw1014.png" alt="Jamaica Out of Many One People T-Shirt" loading="lazy">
                     </div>
                     <div class="item-info">
                         <div class="item-name">Jamaica: One People</div>
@@ -493,9 +545,9 @@
                     </div>
                 </a>
 
-                <a href="https://www.prowrestlingtees.com/reggae-your-life-og.html" target="_blank" class="merch-item">
+                <a href="https://www.prowrestlingtees.com/reggae-your-life-og.html" target="_blank" rel="noopener noreferrer" class="merch-item">
                     <div class="image-box">
-                        <img src="cptw1006.png" alt="Reggae Your Life">
+                        <img src="cptw1006.png" alt="Reggae Your Life OG T-Shirt" loading="lazy">
                     </div>
                     <div class="item-info">
                         <div class="item-name">Reggae Your Life OG</div>
@@ -503,19 +555,24 @@
                     </div>
                 </a>
                 
-                <a href="https://www.prowrestlingtees.com/connect" target="_blank" class="merch-item view-all-card">
+                <a href="https://www.prowrestlingtees.com/connect" target="_blank" rel="noopener noreferrer" class="merch-item view-all-card">
                     View Full<br>Collection<br>➜
                 </a>
-
             </div>
         </section>
-    </div>
+    </main>
 
     <footer>
         <p>&copy; 2025 Connecting People Through Wrestling. All Rights Reserved.</p>
         <p style="font-size: 0.9rem; color: #888; margin-top: 10px;">
-            <a href="https://www.prowrestlingtees.com" target="_blank" class="footer-link">ProWrestlingTees.com</a>
+            Merchandise fulfillment provided by 
+            <a href="https://www.prowrestlingtees.com" target="_blank" rel="noopener noreferrer" class="footer-link">ProWrestlingTees.com</a>
         </p>
+        
+        <div class="legal-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="mailto:your-email@example.com">Contact Us</a>
+        </div>
     </footer>
 
     <script>
@@ -524,7 +581,7 @@
             const sponsorButtons = document.querySelectorAll('.sponsor-btn');
             sponsorButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    alert('Thank you for your interest in sponsoring!\n\nPlease contact me directly to arrange a donation.');
+                    alert('Thank you for your interest in sponsoring!\n\nPlease contact me directly at your-email@example.com to arrange a donation.');
                 });
             });
         });
@@ -558,7 +615,6 @@
                 }
             } catch (error) {
                 console.error('Error fetching images:', error);
-                // Fallback content if API fails (likely rate limit)
                 document.getElementById('slideshow-box').innerHTML = '<p style="color:#ff4500; padding:20px;">Gallery temporarily unavailable (API Rate Limit).<br>Try again later.</p>';
             }
         }
@@ -574,6 +630,7 @@
                 const img = document.createElement('img');
                 img.src = file.download_url; // Uses raw.githubusercontent.com
                 img.className = 'slide-image';
+                img.alt = 'Community Slideshow Image - ' + file.name; // SEO: Added Alt Text
                 if (index === 0) img.classList.add('slide-active');
                 container.insertBefore(img, container.querySelector('.prev'));
             });
@@ -617,6 +674,5 @@
         // Initialize Slideshow
         fetchImages();
     </script>
-
 </body>
 </html>
